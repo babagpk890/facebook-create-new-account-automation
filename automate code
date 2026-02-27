@@ -1,0 +1,67 @@
+package book;
+
+import java.io.File;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class FaceBook {
+	/*	public void screenshot()
+		{
+			TakesScreenshot driver = null;
+			TakesScreenshot sh=(TakesScreenshot) driver;
+			File screenshotAs = sh.getScreenshotAs(OutputType.FILE);
+			System.out.println(screenshotAs);
+			
+		}*/
+	public static void main(String[] args) throws InterruptedException {
+		FaceBook c= new FaceBook();
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\arunk\\eclipse-workspace\\Face\\browser\\chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.get("https://www.facebook.com/login/");
+		WebElement user = driver.findElement(By.id("email"));
+		user.sendKeys("arun");
+		WebElement password = driver.findElement(By.xpath("//input[@type='password']"));
+		password.sendKeys("ak");
+		WebElement login = driver.findElement(By.xpath("//button[@class='_42ft _4jy0 _52e0 _4jy6 _4jy1 selected _51sy\']"));
+		login.click();
+		Thread.sleep(5000);
+		driver.get("https://www.facebook.com/campaign/landing.php?campaign_id=14884913640&extra_1=s%7Cc%7C550525804791%7Cb%7Cfacebook%20%27%7C&placement=&creative=550525804791&keyword=facebook%20%27&partner_id=googlesem&extra_2=campaignid%3D14884913640%26adgroupid%3D128696220912%26matchtype%3Db%26network%3Dg%26source%3Dnotmobile%26search_or_content%3Ds%26device%3Dc%26devicemodel%3D%26adposition%3D%26target%3D%26targetid%3Dkwd-327195741349%26loc_physical_ms%3D9061891%26loc_interest_ms%3D%26feeditemid%3D%26param1%3D%26param2%3D&gclid=CjwKCAjwpKyYBhB7EiwAU2Hn2VfDw7rVr2psKKGhH9jgoNG9ovKzeRPEc4jEGJ2rkLjJHNlNBVMYaxoC_CgQAvD_BwE");
+		WebElement firstname = driver.findElement(By.xpath("//input[@name='firstname']"));
+		firstname.sendKeys("arun");
+		WebElement surename = driver.findElement(By.xpath("//input[@aria-label='Surname']"));
+		surename.sendKeys("sekar");
+		WebElement email = driver.findElement(By.xpath("//input[@name='reg_email__']"));
+		email.sendKeys("arunsekar");
+		WebElement newpassword = driver.findElement(By.xpath("//*[@id='password_step_input']"));
+		newpassword.sendKeys("arun");
+		WebElement dropday = driver.findElement(By.name("birthday_day"));
+		Select r = new Select(dropday);
+		r.selectByIndex(23);
+		WebElement dropmonth = driver.findElement(By.xpath("//*[@id='month']"));
+		Select s=new Select(dropmonth);
+		s.selectByVisibleText("Jun");
+		WebElement dropyear = driver.findElement(By.xpath("//select[@id='year']"));
+		Select m=new Select(dropyear);
+		m.selectByValue("1999");
+		WebElement gender = driver.findElement(By.xpath("//label[text()='Male']"));
+		gender.click();
+		WebElement signup = driver.findElement(By.xpath("//button[text()='Sign Up']"));
+		signup.click();
+		//c.screenshot();
+		TakesScreenshot sh=(TakesScreenshot) driver;
+		File screenshotAs = sh.getScreenshotAs(OutputType.FILE);
+		System.out.println(screenshotAs);
+		
+		Thread.sleep(9000);
+		
+		driver.navigate().refresh();
+
+	}
+
+}
